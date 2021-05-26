@@ -19,7 +19,6 @@ import {
   Platform,
   StatusBar as SB,
   Alert,
-  TouchableOpacity,
   TouchableHighlight
 } from 'react-native';
 

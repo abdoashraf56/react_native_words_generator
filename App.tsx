@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 
-import rw from 'random-words';
+import GetRandomWord from 'random-words';
 
 import {
   useFonts,
@@ -36,14 +36,23 @@ export default function App() {
     Poppins_300Light
   })
 
-  let [word, setWord] = useState(rw())
+  let [word, setWord] = useState(GetRandomWord())
 
-  let handlePress = () => {
-    setWord(rw())
+
+
+  /**
+   * Generate Random word and update the word state with it 
+   */
+  let generateWord = () => {
+    setWord(GetRandomWord())
   }
 
-  let handleLongPress = () => {
-    let content = Clipboard.setString(word);
+  /**
+   * Get the random world and save it to clipboard
+   * and alert the user when done
+   */
+  let saveToClipboard = () => {
+    Clipboard.setString(word);
     Alert.alert("Copied to your Clipboard")
   }
 
@@ -61,8 +70,8 @@ export default function App() {
 
           <TouchableHighlight
             style={styles.btn}
-            onPress={handlePress}
-            onLongPress={handleLongPress}
+            onPress={generateWord}
+            onLongPress={saveToClipboard}
             underlayColor={"#0e3486"}
           >
 
